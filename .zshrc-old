@@ -1,0 +1,5 @@
+export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH
+export PATH=${PATH}:~/Library/Android/sdk/tools
+export PATH=${PATH}:~/Library/Android/sdk/platform-tools
+export EDITOR='subl -w'
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

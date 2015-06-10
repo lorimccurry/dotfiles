@@ -1,0 +1,81 @@
+set tabstop=2 shiftwidth=2 expandtab
+set backspace=2   " Backspace deletes like most programs in insert mode
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set clipboard=unnamed
+set omnifunc=htmlcomplete#CompleteTags
+set nowritebackup
+set noswapfile
+set t_Co=256
+
+"  Plugin 'othree/javascript-libraries-syntax.vim' settings
+let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs,angularui'
+
+" Plugin 'scrooloose/syntastic' settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+" Enables HTML/CSS syntax highlighting in your JavaScript file.
+" Default Value: 0
+" javascript_enable_domhtmlcss
+
+" Enables JavaScript code folding.
+" Default Value: 1
+" b:javascript_fold
+
+" Disables JSDoc syntax highlighting
+" Default Value: 0
+" javascript_ignore_javaScriptdoc
+
+" Switch syntax highlighting on, when the terminal has colors
+" " Also switch on highlighting the last used search pattern.
+
+"    endif
+"
+"    if filereadable(expand("~/.vimrc.bundles"))
+"      source ~/.vimrc.bundles
+"      endif
+"
+"      filetype plugin indent on
+"
+"      augroup vimrcEx
+"        autocmd!
+
+" Automatically wrap at 72 characters and spell check git commit messages
+   autocmd FileType gitcommit setlocal textwidth=72
+   autocmd FileType gitcommit setlocal spell
+
+" Allow stylesheets to autocomplete hyphenated words
+   autocmd FileType css,scss,sass setlocal iskeyword+=-
+   augroup END
+
+" Numbers
+ set number
+ set numberwidth=5 
+
+" Tab completion
+" " will insert tab at beginning of line,
+" " will use completion if not at beginning
+ set wildmode=list:longest,list:full
+ function! InsertTabWrapper()
+     let col = col('.') - 1
+         if !col || getline('.')[col - 1] !~ '\k'
+   		 return "\<tab>"
+         else
+         	return "\<c-p>"
+         endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" syntax enable
+" set background=dark
+colorscheme railscasts 
